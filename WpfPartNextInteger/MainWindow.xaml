@@ -1,0 +1,35 @@
+﻿<Window x:Class="WpfPartNextInteger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPartNextInteger"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="40,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock FontSize="18" FontWeight="Bold" >Task conditions:</TextBlock>
+            <TextBlock TextWrapping="Wrap"> Write a function that takes a positive integer and returns the next smaller positive integer containing the same digits. For example: nextSmaller(21) == 12 nextSmaller(531) == 513 nextSmaller(2071) == 2017 Return -1 (for Haskell: return Nothing, for Rust: return None), when there is no smaller number that contains the same digits. Also return -1 when the next smaller number with the same digits would require the leading digit to be zero. nextSmaller(9) == -1 nextSmaller(111) == -1 nextSmaller(135) == -1 nextSmaller(1027) == -1 // 0721 is out since we don't write numbers with leading zeros some tests will include very large numbers. test data only employs positive integers.</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock FontSize="18" FontWeight="Bold" >Last five results:</TextBlock>
+            <DataGrid x:Name="ResultsGrid"  ></DataGrid>
+        </StackPanel>
+        <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18" FontWeight="Bold" >Add new data:</TextBlock>
+        <StackPanel Margin="0,20,0,0" Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
+            <TextBlock Margin="10,5,0,10" VerticalAlignment="Center">Input Positive Integer</TextBlock>
+            <TextBox x:Name="Input" Margin="10,5,0,10" Width="80" Height="25"></TextBox>
+            <Button Margin="10,5,0,10" Content="Input " Width="80" Height="25" HorizontalAlignment="Right" Click="Button_Click"></Button>
+        </StackPanel>
+        <TextBlock x:Name="Answer" Grid.Row="2" Grid.Column="1" Margin="10,20,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">Answer</TextBlock>
+    </Grid>
+</Window>

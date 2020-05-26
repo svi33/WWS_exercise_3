@@ -1,0 +1,108 @@
+﻿@model IEnumerable<ClassLibraryForDB.DataBase.Result>
+@{
+    ViewData["Title"] = "Home Page";
+}
+    <div class="container-fluid">
+        <div class="row container-fluid">
+            <div class="border rounded-sm col-md-12">
+                <h5>Task:</h5>
+
+                Write a function that takes a positive integer and returns the next smaller positive integer containing the same digits.
+                For example:
+                <ul style="list-style: none;">
+                    <li>nextSmaller(21) == 12</li>
+                    <li>nextSmaller(531) == 513</li>
+                    <li>nextSmaller(2071) == 2017</li>
+                </ul>
+                Return -1 (for Haskell: return Nothing, for Rust: return None), when there is no smaller number that contains the same digits. Also return -1 when the next smaller number with the same digits would require the leading digit to be zero.
+                <ul style="list-style: none;">
+                    <li>nextSmaller(9) == -1</li>
+                    <li>nextSmaller(111) == -1</li>
+                    <li>nextSmaller(135) == -1</li>
+                    <li>nextSmaller(1027) == -1 // 0721 is out since we don't write numbers with leading zeros</li>
+                </ul>
+                some tests will include very large numbers.
+                test data only employs positive integers
+            </div>
+        </div>
+                <div class="row container-fluid">
+                    <div class="col-md-8 border rounded-sm">
+                        <h5>Last five results in table</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th> Input</th>
+                                    <th> Answer </th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td> @item.Input</td>
+                                    <td> @item.Answer </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+
+                    <div class="col-md-4 border rounded-sm">
+                        <h5>Input number to get next smaller: </h5>
+
+                        <p>
+                            <label>Input number</label><br />
+                            <input id="inputNumber" type="text" name="Number" />
+                        </p>
+                        <p>
+
+                            <button class="btn btn-secondary" button onclick="startCalculation()"> Calculate </button>
+                        </p>
+                    </div>
+                </div>
+
+        </div>
+
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Calculation</h3>
+
+                    </div>
+                    <div class="modal-body" id="myModalBodyDiv">
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-secondary">Ok</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        @section Scripts{
+            <script type="text/javascript">
+
+                var startCalculation = function () {
+                    var number = $("#inputNumber").val();
+                    if (!$.isNumeric(number)) {
+                        alert("Bad input"); return;
+                    }
+                    if (number < 0) {
+                        alert("Bad input"); return;
+                    }
+                    var url = "Home/AddCalculation?number=" + number;
+                    $("#myModalBodyDiv").load(url, function () {
+                        $("#myModal").modal("show");
+
+                    });
+
+                }
+            </script>
+        }
