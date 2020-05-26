@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfPartNextInteger"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="40,20">
+    <Grid Margin="30,20">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="3*"></RowDefinition>
