@@ -11,3 +11,7 @@ nextSmaller(135) == -1
 nextSmaller(1027) == -1 // 0721 is out since we don't write numbers with leading zeros
 some tests will include very large numbers.
 test data only employs positive integers.
+--Add save to DB
+--Add ASP MVC Core Part
+--Add WPF Part
+
